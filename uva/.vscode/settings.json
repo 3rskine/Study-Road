@@ -12,6 +12,7 @@
         "iostream": "cpp",
         "utility": "cpp",
         "cstdlib": "cpp",
-        "xtree": "cpp"
+        "xtree": "cpp",
+        "functional": "cpp"
     }
 }
