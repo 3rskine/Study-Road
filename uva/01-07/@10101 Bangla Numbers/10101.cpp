@@ -8,6 +8,7 @@ void ban (long long n){
         n %= 10000000;
         if (n) cout <<" ";        
         }
+        //只有n超過一輪kuti時需要recurve這個函式-> lakh hajar shata kuti ...
     if(n >= 100000){
         cout << n / 100000 << " lakh" ;
         n%= 100000;
