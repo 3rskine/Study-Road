@@ -9,7 +9,7 @@ int main() {
     int maxLength = 0;
 
     // Read input
-    while (getline(cin, line)) {
+    while (getline(cin, line)&& !line.empty()) {
         sentences.push_back(line);
         if (line.length() > maxLength)
             maxLength = line.length();
