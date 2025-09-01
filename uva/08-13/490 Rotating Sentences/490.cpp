@@ -19,16 +19,14 @@ int main (){
         }
     }
     for(int col = 0; col < Maxlen ; col ++){
-        for (int row = 0; row < sentences.size()-1 ; row++)
+        for (int row = sentences.size()-1; row>=0 ; row--)
         {
             cout<< sentences[row][col];
         }
     cout<<endl;
     }
     return 0 ;    
-
-
-    }
+}
 
     
     
