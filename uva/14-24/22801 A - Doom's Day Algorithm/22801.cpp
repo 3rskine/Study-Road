@@ -14,7 +14,7 @@ int main (){
         int diffofday = D - base[M];//實際日子 扣掉 某月的基準日
         int Cortvalu = (0+diffofday) % 7;
         if(Cortvalu < 0) Cortvalu+=7;
-        cout<< week[Cortvalu];
+        cout<< week[Cortvalu] << endl;
     }
     return 0 ;
 
