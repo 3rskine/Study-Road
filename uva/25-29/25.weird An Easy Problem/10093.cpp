@@ -4,8 +4,7 @@ int charToValue (char c){
     if('0' <= c && c <= '9') return c -'0';
     if('A' <= c && c <= 'Z') return c -'A'+10;
     if('a' <= c && c <= 'z') return c -'a'+36;
-    if(c == '-') return -1;
-    return 0;
+    return -1;
 }
 
 int main (){
@@ -19,6 +18,8 @@ int main (){
         int sum = 0;
         for(char c : s){
             int val = charToValue(c);
+            if(val == -1) continue;
+
             MaxDegit = max(MaxDegit , val);
             sum += val;
         }
