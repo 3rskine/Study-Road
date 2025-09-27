@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        "49": "cpp",
         "format": "cpp",
         "initializer_list": "cpp",
         "list": "cpp",
