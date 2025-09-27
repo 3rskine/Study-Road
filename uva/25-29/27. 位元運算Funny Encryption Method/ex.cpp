@@ -11,6 +11,9 @@ int countOnes(long long x) {
     return cnt;
 }
 
+
+
+
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);

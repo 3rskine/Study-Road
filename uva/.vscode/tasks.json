@@ -1,0 +1,72 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Open Cmd Here (Current File Dir)",
+            "type": "shell",
+            "command": "cmd",
+            "args": [
+                "/k",
+                "cd /d \"${fileDirname}\""
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Compile Only Current C++ (fast)",
+            "type": "shell",
+            "command": "cmd",
+            "args": [
+                "/k",
+                "cd /d \"${fileDirname}\" && g++ \"${fileBasename}\" -std=c++17 -O0 -g -o \"${fileBasenameNoExtension}.exe\""
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Run Only Current Executable",
+            "type": "shell",
+            "command": "cmd",
+            "args": [
+                "/k",
+                "cd /d \"${fileDirname}\" && if exist \"${fileBasenameNoExtension}.exe\" ( .\\${fileBasenameNoExtension}.exe ) else ( echo EXE not found. Press any key... & pause )"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Smart Compile and Run (only recompile if needed)",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-NoProfile",
+                "-ExecutionPolicy",
+                "Bypass",
+                "-Command",
+                "cd \"${fileDirname}\"; if (!(Test-Path \"${fileBasenameNoExtension}.exe\") -or (Get-Item \"${fileBasename}\").LastWriteTime -gt (Get-Item \"${fileBasenameNoExtension}.exe\").LastWriteTime) { g++ \"${fileBasename}\" -std=c++17 -O2 -pipe -o \"${fileBasenameNoExtension}.exe\" } ; if (Test-Path \"${fileBasenameNoExtension}.exe\") { .\\${fileBasenameNoExtension}.exe } else { Write-Host 'Compile failed or exe missing.' }"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        }
+    ]
+}
