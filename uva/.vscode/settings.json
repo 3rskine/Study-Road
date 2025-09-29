@@ -1,5 +1,8 @@
 {
     "files.associations": {
+        "1": "cpp",
+        "39": "cpp",
+        "40": "cpp",
         "49": "cpp",
         "format": "cpp",
         "initializer_list": "cpp",
@@ -17,6 +20,7 @@
         "functional": "cpp",
         "cmath": "cpp",
         "iosfwd": "cpp",
-        "ranges": "cpp"
+        "ranges": "cpp",
+        "tuple": "cpp"
     }
 }
