@@ -20,15 +20,13 @@ int main (){
                 
             }
             int dif = abs( odd - even);
-            if (dif%11 == 0)
+            if (dif% 11 == 0)
             {
             cout << is11 << " is a multiple of 11." << endl;
             }
             else{
             cout <<is11 << " is not a multiple of 11." << endl;
             }
-        
         }
         return 0;
-        
 }

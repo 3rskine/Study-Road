@@ -24,29 +24,16 @@ int main(){
             int db = (i < (int)b.size()) ? (b[i] - '0') : 0;
 
             int sum = da + db + addit;
-            if( sum > 9)
-            {
+            if( sum > 9){
              addit = 1;
-
              num ++;
             }
-            else
-            {
-            addit = 0;
-            }
-
-
+            else addit = 0;
         }
         
-        if ( num == 0){
-        cout << "No carry operation." << endl;
-        }
-        else if ( num == 1) {
-        cout << num <<" carry operation." << endl;
-        }        
-        else {
-        cout << num <<" carry operations." << endl;
-        }
+        if ( num == 0) cout << "No carry operation." << endl;
+        else if ( num == 1)  cout << num <<" carry operation." << endl;    
+        else                     cout << num <<" carry operations." << endl;
     }
     return 0;
 }

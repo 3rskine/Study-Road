@@ -27,7 +27,6 @@ void ban (long long a){
     if (a>0){
         cout << a ;
     }
-
 }
 
 int main () {
@@ -45,7 +44,4 @@ int main () {
             }
         }
         return 0;
-        
-        
-
 }

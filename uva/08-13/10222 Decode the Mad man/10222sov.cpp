@@ -18,10 +18,7 @@ int main() {
             {
                 cout << keyboard[gpstheCh - 2];
             }
-            
-
         } 
-        
         }
         cout<< endl;
     }
