@@ -4,7 +4,7 @@ typedef struct Ticketinfo{
   int who;
   int whattype;
   double fare; //discount
-
+`
   void(*diser)(struct Ticketinfo *);
   void(*boser)(struct Ticketinfo *);
 }Ticket;
