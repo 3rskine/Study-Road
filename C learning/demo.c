@@ -1,66 +1,41 @@
 #include <stdio.h>
 
-// 作物結構
-typedef struct { 
-    int type;       // 1=稻米, 2=文旦, 3=西瓜
-    double base_rate;    
-} Crop;
+typedef struct {
+    int code;
+    int weight;
+    int points;
+} Animal;
 
-// 農民結構
-typedef struct Farmer {
-    int age;
-    int is_organic;        // 1=有機, 0=非有機
-    double area;           // 土地面積（公頃）
-    Crop crop;             // 所種作物
-    int (*calculate_subsidy)(struct Farmer*); // 函數指標
-} Farmer;
+// 函數指標類型
+typedef int (*CalcPointsFunc)(int weight, int index);
 
-// 補助計算函數
-int default_subsidy(Farmer *farmer) {
-    // 設定作物基本補助
-    if (farmer->crop.type == 1) farmer->crop.base_rate = 10000;    // 稻米
-    else if (farmer->crop.type == 2) farmer->crop.base_rate = 8000; // 文旦
-    else farmer->crop.base_rate = 6000;                             // 西瓜
+// 山豬積分
+int f_boar(int w, int i){ return w + (w>100?50:0); }
 
-    // 計算倍率
-    double organic_multiplier = 1.0;
-    if (farmer->is_organic) {
-        if (farmer->crop.type == 2) organic_multiplier = 1.8; // 文旦有機特殊條款
-        else organic_multiplier = 1.5;                        // 其他作物有機
+// 山羌積分
+int f_muntjac(int w, int i){ return i<5 ? w*2 : 0; }
+
+// 水鹿積分
+int f_sambar(int w, int i){ return w*3; }
+
+int main(){
+    Animal a;
+    int total_count=0, total_weight=0, total_points=0, muntjac_index=0;
+
+    // 代碼對應函數指標
+    CalcPointsFunc funcs[4]={NULL,f_boar,f_muntjac,f_sambar};
+
+    while(scanf("%d %d",&a.code,&a.weight) && a.code){
+        total_count++;
+        total_weight += a.weight;
+
+        a.points = (a.code==2) ? funcs[a.code](a.weight,muntjac_index++) 
+                               : funcs[a.code](a.weight,0);
+        total_points += a.points;
     }
 
-    double young_multiplier = 1.0;
-    if (farmer->age <= 40 && !(farmer->crop.type == 3 && farmer->area < 0.5)) {
-        young_multiplier = 1.2; // 年輕農民加成（西瓜小面積例外）
-    }
-
-    // 計算補助
-    double subsidy;
-    if (farmer->crop.type == 1 && farmer->area > 5) {
-        // 稻米大戶條款
-        subsidy = 5 * farmer->crop.base_rate * organic_multiplier * young_multiplier +
-                  (farmer->area - 5) * farmer->crop.base_rate * 0.8 * organic_multiplier * young_multiplier;
-    } else {
-        subsidy = farmer->area * farmer->crop.base_rate * organic_multiplier * young_multiplier;
-    }
-
-    // 補助上限
-    if (subsidy > 200000) subsidy = 200000;
-
-    return (int)subsidy; // 捨去小數
-}
-
-int main() {
-    Farmer farmer;
-
-    // 輸入：作物種類 年齡 是否有機 土地面積
-    scanf("%d %d %d %lf", &farmer.crop.type, &farmer.age, &farmer.is_organic, &farmer.area);
-
-    // 將函數指標指向補助計算函數
-    farmer.calculate_subsidy = default_subsidy;
-
-    // 呼叫函數指標計算補助
-    printf("Final Subsidy: %d\n", farmer.calculate_subsidy(&farmer));
-
+    printf("Total Animals Reported: %d\n", total_count);
+    printf("Total Weight Reported: %d kg\n", total_weight);
+    printf("Total Conservation Points: %d\n", total_points);
     return 0;
 }
