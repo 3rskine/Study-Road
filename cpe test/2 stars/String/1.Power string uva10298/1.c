@@ -7,14 +7,11 @@ int main(){
         if(strcmp(s,".") == 0) break;
         len = strlen(s);
         flag = 0;
-        for (i = 1; i <= len; i++)
-        {
+        for (i = 1; i <= len; i++){
             if(len % i != 0) continue;
             flag = 1;
-            for (j = i; j < len && flag == 1; j += i)
-            {
-                for ( k = 0; k < i && flag == 1; k++)
-                {
+            for (j = i; j < len && flag == 1; j += i){
+                for ( k = 0; k < i && flag == 1; k++){
                     if(s[k] != s[k+j])flag = 0;
                 }
             }
@@ -23,7 +20,6 @@ int main(){
                 break;
             }
         }
-        
     }
     return 0;
 }
