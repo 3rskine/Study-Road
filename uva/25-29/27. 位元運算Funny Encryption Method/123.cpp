@@ -13,6 +13,8 @@ int counthowmany1 (long long x){
     return count;
 }
 
+//counthowmany1(x) == __builtin_popcount(x)
+
 int main (){
     ios::sync_with_stdio(0);
     cin.tie(nullptr);
@@ -27,7 +29,7 @@ int main (){
         long long b1 = counthowmany1 (decBase);
 
         long long HexBase = stoll(M , nullptr , 16);
-        long long b2 = counthowmany1 (HexBase);
+        long long b2 = __builtin_popcount(HexBase);
 
         cout << b1 << " " << b2 << "\n";
     }

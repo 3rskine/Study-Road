@@ -8,9 +8,6 @@ int charToValue (char c){
 }
 
 int main (){
-    ios::sync_with_stdio(0);
-    cin.tie(nullptr);
-
     string s;
     while (cin >> s)
     {

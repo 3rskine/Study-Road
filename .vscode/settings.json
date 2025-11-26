@@ -24,6 +24,12 @@
         "stacktrace": "cpp",
         "text_encoding": "cpp",
         "regex": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "20.C": "cpp",
+        "19.C": "cpp",
+        "tempCodeRunnerFile.C": "cpp",
+        "chrono": "cpp",
+        "variant": "cpp",
+        "21.C": "cpp"
     }
 }

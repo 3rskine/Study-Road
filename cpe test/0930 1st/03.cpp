@@ -21,7 +21,7 @@ int main(){
             }
         }
         if(!p.empty()) islegal = 0; //如果p不是空的，則不合法
-        cout << (succ ? "Yes" : "No") << endl;
+        cout << (islegal ? "Yes" : "No") << endl;
     }
     return 0;
 }
